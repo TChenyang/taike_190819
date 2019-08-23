@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nandu.taike.mapper.scSysLogInfo.TkSysLogInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.nandu.taike.pojo.scSysLogInfo.TkSysLogInfo">
+        <id column="TK_ID" property="tkId" />
+        <result column="TK_USER_NAME" property="tkUserName" />
+        <result column="TK_IP" property="tkIp" />
+        <result column="TK_METHOD" property="tkMethod" />
+        <result column="TK_CLASS_NAME" property="tkClassName" />
+        <result column="TK_CREATE_TIME" property="tkCreateTime" />
+        <result column="TK_REMOTE_HOST" property="tkRemoteHost" />
+        <result column="TK_URL" property="tkUrl" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        TK_ID, TK_USER_NAME, TK_IP, TK_METHOD, TK_CLASS_NAME, TK_CREATE_TIME, TK_REMOTE_HOST, TK_URL
+    </sql>
+
+</mapper>
