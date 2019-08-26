@@ -1,11 +1,8 @@
 package com.nandu.taike.controller.scSysLogInfo;
 
 
-import com.nandu.taike.service.login.LoginInService;
-import com.nandu.taike.service.scSysLogInfo.TkSysLogInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 

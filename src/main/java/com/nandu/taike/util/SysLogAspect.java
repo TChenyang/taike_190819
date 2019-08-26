@@ -1,7 +1,6 @@
 package com.nandu.taike.util;
 
 import com.nandu.taike.pojo.scSysLogInfo.TkSysLogInfo;
-import com.nandu.taike.service.login.LoginInService;
 import com.nandu.taike.service.scSysLogInfo.TkSysLogInfoService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -19,11 +18,10 @@ import java.util.UUID;
 @Aspect
 @Transactional(readOnly = true)
 public class SysLogAspect {
-
-    private static final Logger log = LoggerFactory.getLogger(SysLogAspect.class);
-
     @Autowired
     private TkSysLogInfoService tkSysLogInfoService;
+    private static final Logger log = LoggerFactory.getLogger(SysLogAspect.class);
+
 
     //com.kzj.kzj_rabbitmq.controller 包中所有的类的所有方法切面
     //@Pointcut("execution(public * com.kzj.kzj_rabbitmq.controller.*.*(..))")
