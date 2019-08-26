@@ -1,5 +1,6 @@
 package com.nandu.taike.pojo.scSysLogInfo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -12,14 +13,14 @@ import java.io.Serializable;
  * </p>
  *
  * @author TK
- * @since 2019-08-22
+ * @since 2019-08-26
  */
 @TableName("TK_SYS_LOG_INFO")
 public class TkSysLogInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId
+    @TableId(type = IdType.UUID)
     private String tkId;
 
     /**
@@ -56,6 +57,7 @@ public class TkSysLogInfo implements Serializable {
      * 访问的URL
      */
     private String tkUrl;
+
 
     public String getTkId() {
         return tkId;
@@ -119,5 +121,19 @@ public class TkSysLogInfo implements Serializable {
 
     public void setTkUrl(String tkUrl) {
         this.tkUrl = tkUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "TkSysLogInfo{" +
+        "tkId=" + tkId +
+        ", tkUserName=" + tkUserName +
+        ", tkIp=" + tkIp +
+        ", tkMethod=" + tkMethod +
+        ", tkClassName=" + tkClassName +
+        ", tkCreateTime=" + tkCreateTime +
+        ", tkRemoteHost=" + tkRemoteHost +
+        ", tkUrl=" + tkUrl +
+        "}";
     }
 }

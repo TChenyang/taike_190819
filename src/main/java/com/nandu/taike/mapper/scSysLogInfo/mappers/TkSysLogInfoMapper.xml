@@ -4,7 +4,7 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.nandu.taike.pojo.scSysLogInfo.TkSysLogInfo">
-        <id column="TK_ID" property="tkId" />
+        <result column="TK_ID" property="tkId" />
         <result column="TK_USER_NAME" property="tkUserName" />
         <result column="TK_IP" property="tkIp" />
         <result column="TK_METHOD" property="tkMethod" />

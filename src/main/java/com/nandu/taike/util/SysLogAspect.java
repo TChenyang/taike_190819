@@ -2,6 +2,7 @@ package com.nandu.taike.util;
 
 import com.nandu.taike.pojo.scSysLogInfo.TkSysLogInfo;
 import com.nandu.taike.service.login.LoginInService;
+import com.nandu.taike.service.scSysLogInfo.TkSysLogInfoService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
@@ -22,7 +23,7 @@ public class SysLogAspect {
     private static final Logger log = LoggerFactory.getLogger(SysLogAspect.class);
 
     @Autowired
-    LoginInService tkSysLogInfoService;
+    private TkSysLogInfoService tkSysLogInfoService;
 
     //com.kzj.kzj_rabbitmq.controller 包中所有的类的所有方法切面
     //@Pointcut("execution(public * com.kzj.kzj_rabbitmq.controller.*.*(..))")

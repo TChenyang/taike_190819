@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author TK
- * @since 2019-08-22
+ * @since 2019-08-26
  */
 public interface TkSysLogInfoMapper extends BaseMapper<TkSysLogInfo> {
 
