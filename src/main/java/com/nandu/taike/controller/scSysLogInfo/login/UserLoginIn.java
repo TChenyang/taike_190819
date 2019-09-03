@@ -1,8 +1,10 @@
 package com.nandu.taike.controller.scSysLogInfo.login;
 
 import com.alibaba.druid.support.json.JSONUtils;
+import com.nandu.taike.pojo.scSysLogInfo.TkSysLogInfo;
 import com.nandu.taike.rabbitMq.Producer;
 import com.nandu.taike.util.CookieUtil;
+import com.nandu.taike.util.rabbitMq.RabbitMqUtil;
 import com.nandu.taike.util.redis.RedisUtil;
 import org.apache.logging.log4j.core.util.JsonUtils;
 import org.slf4j.Logger;
@@ -32,6 +34,8 @@ public class UserLoginIn {
     @Autowired
     private Producer producer;
     @Autowired
+    private RabbitMqUtil rabbitMqUtil;
+    @Autowired
     private CookieUtil cookieUtil;
 
     @PostMapping("/loginIn")
@@ -45,7 +49,7 @@ public class UserLoginIn {
         redisUtil.expire("REDIS_SESSION_KEY"+":"+token,3000);
         //写cookie
         cookieUtil.setCookie(request,response,"TK_TOKEN",token);
-        producer.send();
+        rabbitMqUtil.send("myTopicExchange","routingKey",new TkSysLogInfo());
         return null;
     }
     /***

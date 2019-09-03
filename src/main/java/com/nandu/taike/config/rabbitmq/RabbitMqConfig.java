@@ -2,10 +2,14 @@ package com.nandu.taike.config.rabbitmq;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,9 +53,31 @@ public class RabbitMqConfig {
      *      4.exclusive 表示该消息队列是否只在当前connection生效,默认时false
      * */
     @Bean
+    @Qualifier("myQueue")
     public Queue helloQueue(){
         log.info("--------------加载bean>>>>>>>>生成=========Queue========Object");
-        return new Queue("cy-mine-Queue");
+        return new Queue("8291018-Queue");
+    }
+
+    /**
+     * 声明交换器
+     * */
+    @Bean
+    @Qualifier("myTopicExchange")
+    public TopicExchange exchange(){
+        log.info("--------------=========TopicExchange========Object");
+        return new TopicExchange("myTopicExchange", false, true);
+    }
+
+    /**
+     * 声明绑定关系
+     * * */
+    @Bean
+    public Binding binding(
+            @Qualifier("myQueue") Queue queue,
+            @Qualifier("myTopicExchange") TopicExchange topicExchange){
+        log.info("--------------=========Declare Binding Relationship========----------");
+        return BindingBuilder.bind(queue).to(topicExchange).with("routingKey");
     }
 
     /**
